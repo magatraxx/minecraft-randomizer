@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
@@ -49,6 +50,12 @@ public class MagatraxxRandomizer
     private void doClientStuff(final FMLClientSetupEvent event) {
         // do something that can only be done on the client
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
+    }
+
+    @SubscribeEvent
+    public void onBlockBroken(BlockEvent.HarvestDropsEvent e) {
+        LOGGER.info("hello");
+        System.out.println("Testing Hello there");
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)
